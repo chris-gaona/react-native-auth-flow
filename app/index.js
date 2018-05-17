@@ -1,7 +1,7 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-import { SignedOut, SignedIn } from "./router";
+import { SignedOut, SignedIn, createRootNavigator } from "./router";
 
 import { isSignedIn } from "./auth";
 
@@ -29,10 +29,7 @@ export default class App extends React.Component {
       return null;
     }
 
-    if (signedIn) {
-      return <SignedIn />;
-    } else {
-      return <SignedOut />;
-    }
+    const Layout = createRootNavigator(signedIn);
+    return <Layout />;
   }
 }
